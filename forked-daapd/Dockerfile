@@ -19,6 +19,7 @@ RUN apk update \
         avahi-dev \
         bash \
         bsd-compat-headers \
+        g++ \
         build-base \
         confuse-dev \
         curl \
@@ -35,7 +36,7 @@ RUN apk update \
         libsodium-dev \
         libtool \
         libunistring-dev \
-        openjdk7-jre-base \
+        openjdk8-jre-base \
         protobuf-c-dev \
         sqlite-dev \
         
