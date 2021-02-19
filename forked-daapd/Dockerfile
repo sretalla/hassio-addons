@@ -1,4 +1,4 @@
-ARG BUILD_FROM=hassioaddons/base:8.0.0
+ARG BUILD_FROM=hassioaddons/base:latest
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
@@ -8,9 +8,10 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 #adapted from sretalla's/kevineye's dockerfiles
 # hadolint ignore=DL3003
 RUN apk update \
-# && apk add --no-cache \
-#        libcrypto1.1=1.1.1g-r0 \
-#        libssl1.1=1.1.1g-r0 \
+ && apk add --no-cache \
+        libcrypto1.1=1.1.1j-r0 \
+        libssl1.1=1.1.1j-r0 \
+
  && apk add --no-cache --virtual deps1 \
         alsa-lib-dev \
         autoconf \
@@ -42,8 +43,8 @@ RUN apk update \
         
  && apk add --no-cache --virtual=deps2 --repository http://nl.alpinelinux.org/alpine/edge/testing \
         libantlr3c-dev \
-        mxml-dev \
-        
+
+	libwebsockets-dev \       
  && apk add --no-cache \
         avahi \
         confuse \
@@ -56,37 +57,42 @@ RUN apk update \
         libplist \
         libsodium \
         libunistring \
-        libuv=1.29.1-r0 \
-        libuv-dev=1.29.1-r0 \
+        libuv \
+        libuv-dev \
         protobuf-c \
         sqlite \
         sqlite-libs \
         openssl \
-        
  && apk add --no-cache --repository http://nl.alpinelinux.org/alpine/edge/testing \
         libantlr3c \
-        mxml \
- 
+
+ && curl -L -o /tmp/mxml-3.2.tar.gz https://github.com/michaelrsweet/mxml/releases/download/v3.2/mxml-3.2.tar.gz  && \
+	mkdir /tmp/mxml-3.2 && \
+	tar -xf /tmp/mxml-3.2.tar.gz -C /tmp && \ 
+	cd /tmp/mxml-3.2 && \
+	./configure && \
+	make && \
+	make install \ 
  && curl -L -o /tmp/antlr-3.4-complete.jar http://www.antlr3.org/download/antlr-3.4-complete.jar && \
     echo '#!/bin/bash' > /usr/local/bin/antlr3 && \
     echo 'exec java -cp /tmp/antlr-3.4-complete.jar org.antlr.Tool "$@"' >> /usr/local/bin/antlr3 && \
     chmod 775 /usr/local/bin/antlr3 \
 
- && cd /tmp && \
-    git clone --branch "v3.2.2" --depth=1 https://github.com/warmcat/libwebsockets.git && \
-    cd /tmp/libwebsockets && \
-    cmake ./ \
-        -DCMAKE_BUILD_TYPE=MinSizeRel \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_VERBOSE_MAKEFILE=TRUE \
-        -DLWS_IPV6=ON \
-        -DLWS_STATIC_PIC=ON \
-        -DLWS_UNIX_SOCK=OFF \
-        -DLWS_WITH_LIBUV=ON \
-        -DLWS_WITH_SHARED=ON \
-        -DLWS_WITHOUT_TESTAPPS=ON && \
-    make && \
-    make install \
+# && cd /tmp && \
+#    git clone --branch "v4.1.6" --depth=1 https://github.com/warmcat/libwebsockets.git && \
+#   cd /tmp/libwebsockets && \
+#    cmake ./ \
+#        -DCMAKE_BUILD_TYPE=MinSizeRel \
+#        -DCMAKE_INSTALL_PREFIX=/usr \
+#       -DCMAKE_VERBOSE_MAKEFILE=TRUE \
+#        -DLWS_IPV6=ON \
+#        -DLWS_STATIC_PIC=ON \
+#        -DLWS_UNIX_SOCK=OFF \
+#        -DLWS_WITH_LIBUV=ON \
+#        -DLWS_WITH_SHARED=ON \
+#        -DLWS_WITHOUT_TESTAPPS=ON && \
+#    make && \
+#    make install \
 
  && cd /tmp && \
     git clone https://github.com/ejurgensen/forked-daapd.git && \
