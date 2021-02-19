@@ -79,7 +79,7 @@ RUN apk update \
     chmod 775 /usr/local/bin/antlr3 \
 
  && cd /tmp && \
-    git clone --branch "v4.1.6" --depth=1 https://github.com/warmcat/libwebsockets.git && \
+    git clone --branch "v3.2.3" --depth=1 https://github.com/warmcat/libwebsockets.git && \
    cd /tmp/libwebsockets && \
     cmake ./ \
         -DCMAKE_BUILD_TYPE=MinSizeRel \
