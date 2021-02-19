@@ -37,7 +37,7 @@ RUN apk update \
         libsodium-dev \
         libtool \
         libunistring-dev \
-        openjdk8-jre-base \
+        openjdk11-jre-base \
         protobuf-c-dev \
         sqlite-dev \
         
