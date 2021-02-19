@@ -62,6 +62,7 @@ RUN apk update \
         sqlite \
         sqlite-libs \
         openssl \
+	
  && apk add --no-cache --repository http://nl.alpinelinux.org/alpine/edge/testing \
         libantlr3c \
 
@@ -78,7 +79,7 @@ RUN apk update \
     chmod 775 /usr/local/bin/antlr3 \
 
  && cd /tmp && \
-    git clone --branch "v3.2.3" --depth=1 https://github.com/warmcat/libwebsockets.git && \
+   git clone --branch "v3.2.3" --depth=1 https://github.com/warmcat/libwebsockets.git && \
    cd /tmp/libwebsockets && \
     	cmake ./ \
         -DCMAKE_BUILD_TYPE=MinSizeRel \
@@ -92,7 +93,7 @@ RUN apk update \
         -DLWS_WITHOUT_TESTAPPS=ON && \
 	make && \
         make install && \
-        ln -s /usr/lib/libwebsockets.so.17 /usr/lib/libwebsockets.so.15 \
+#        ln -s /usr/lib/libwebsockets.so.17 /usr/lib/libwebsockets.so.15 \
  && cd /tmp && \
     git clone https://github.com/ejurgensen/forked-daapd.git && \
     cd /tmp/forked-daapd && \
