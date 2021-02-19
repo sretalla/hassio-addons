@@ -92,7 +92,7 @@ RUN apk update \
         -DLWS_WITH_SHARED=ON \
         -DLWS_WITHOUT_TESTAPPS=ON && \
 	make && \
-        make install && \
+        make install \
 #        ln -s /usr/lib/libwebsockets.so.17 /usr/lib/libwebsockets.so.15 \
  && cd /tmp && \
     git clone https://github.com/ejurgensen/forked-daapd.git && \
