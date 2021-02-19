@@ -1,6 +1,6 @@
 {
   "name": "forked-daapd",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "slug": "forked-daapd",
   "description": "Forked-daapd media server instance",
   "url": "https://github.com/sretalla/hassio-addons/forked-daapd",
