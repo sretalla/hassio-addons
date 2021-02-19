@@ -78,21 +78,21 @@ RUN apk update \
     echo 'exec java -cp /tmp/antlr-3.4-complete.jar org.antlr.Tool "$@"' >> /usr/local/bin/antlr3 && \
     chmod 775 /usr/local/bin/antlr3 \
 
-# && cd /tmp && \
-#    git clone --branch "v4.1.6" --depth=1 https://github.com/warmcat/libwebsockets.git && \
-#   cd /tmp/libwebsockets && \
-#    cmake ./ \
-#        -DCMAKE_BUILD_TYPE=MinSizeRel \
-#        -DCMAKE_INSTALL_PREFIX=/usr \
-#       -DCMAKE_VERBOSE_MAKEFILE=TRUE \
-#        -DLWS_IPV6=ON \
-#        -DLWS_STATIC_PIC=ON \
-#        -DLWS_UNIX_SOCK=OFF \
-#        -DLWS_WITH_LIBUV=ON \
-#        -DLWS_WITH_SHARED=ON \
-#        -DLWS_WITHOUT_TESTAPPS=ON && \
-#    make && \
-#    make install \
+ && cd /tmp && \
+    git clone --branch "v4.1.6" --depth=1 https://github.com/warmcat/libwebsockets.git && \
+   cd /tmp/libwebsockets && \
+    cmake ./ \
+        -DCMAKE_BUILD_TYPE=MinSizeRel \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+       -DCMAKE_VERBOSE_MAKEFILE=TRUE \
+        -DLWS_IPV6=ON \
+        -DLWS_STATIC_PIC=ON \
+        -DLWS_UNIX_SOCK=OFF \
+        -DLWS_WITH_LIBUV=ON \
+        -DLWS_WITH_SHARED=ON \
+        -DLWS_WITHOUT_TESTAPPS=ON && \
+    make && \
+    make install \
 
  && cd /tmp && \
     git clone https://github.com/ejurgensen/forked-daapd.git && \
