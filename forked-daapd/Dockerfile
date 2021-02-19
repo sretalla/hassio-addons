@@ -43,9 +43,10 @@ RUN apk update \
         
  && apk add --no-cache --virtual=deps2 --repository http://nl.alpinelinux.org/alpine/edge/testing \
         libantlr3c-dev \
-
 	libwebsockets-dev \       
- && apk add --no-cache \
+	musl-dev \
+
+&& apk add --no-cache \
         avahi \
         confuse \
         dbus \
