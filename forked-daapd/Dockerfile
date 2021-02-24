@@ -138,13 +138,13 @@ LABEL \
     io.hass.arch="${BUILD_ARCH}" \
     io.hass.type="addon" \
     io.hass.version=${BUILD_VERSION} \
-    maintainer="John Dowling <john.patrick.dowling@gmail.com>" \
+    maintainer="sretalla <sretalla@windowslive.com>" \
     org.label-schema.description="The forked-daapd server program" \
     org.label-schema.build-date=${BUILD_DATE} \
     org.label-schema.name="Forked-daapd Server" \
     org.label-schema.schema-version="1.0" \
     org.label-schema.url="" \
-    org.label-schema.usage="https://github.com/johnpdowling/hassio-addons/tree/master/forked-daapd/README.md" \
+    org.label-schema.usage="https://github.com/sretalla/hassio-addons/tree/master/forked-daapd/README.md" \
     org.label-schema.vcs-ref=${BUILD_REF} \
-    org.label-schema.vcs-url="https://github.com/johnpdowling/hassio-addons/forked-daapd" \
-    org.label-schema.vendor="JPD Hass.io Add-ons"
+    org.label-schema.vcs-url="https://github.com/sretalla/hassio-addons/forked-daapd" \
+    org.label-schema.vendor="SR Hass.io Add-ons"
