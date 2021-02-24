@@ -20,7 +20,7 @@ RUN apk update \
         avahi-dev \
         bash \
         bsd-compat-headers \
-        g++ \
+#        g++ \
         build-base \
         confuse-dev \
         curl \
