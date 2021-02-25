@@ -1,4 +1,4 @@
-ARG BUILD_FROM=hassioaddons/base:8.0.6
+ARG BUILD_FROM=hassioaddons/base:edge
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
@@ -46,8 +46,6 @@ RUN apk update \
 	
 && apk add --no-cache \
         avahi \
-	avahi-daemon \
-	libnss-mdns \
 	confuse \
         dbus \
         ffmpeg \
