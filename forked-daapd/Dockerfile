@@ -20,7 +20,7 @@ RUN apk update \
         avahi-dev \
         bash \
         bsd-compat-headers \
-#        g++ \
+        g++ \
         build-base \
         confuse-dev \
         curl \
@@ -46,7 +46,9 @@ RUN apk update \
 	
 && apk add --no-cache \
         avahi \
-        confuse \
+	avahi-daemon \
+	libnss-mdns \
+	confuse \
         dbus \
         ffmpeg \
         json-c \
